@@ -1,0 +1,33 @@
+repos:
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: "v0.12.4"
+    hooks:
+      - id: ruff
+        args: ["--config", "pyproject.toml", "--fix-only", "--show-fixes"]
+      - id: ruff-format
+
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: "0.8.0"
+    hooks:
+      - id: uv-export
+        args:
+          [
+            "--frozen",
+            "--no-dev",
+            "--no-hashes",
+            "--output-file=requirements.txt",
+          ]
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: "v8.27.2"
+    hooks:
+      - id: gitleaks
+        name: gitleaks
+
+  - repo: local
+    hooks:
+      - id: pyright
+        name: pyright
+        entry: pyright
+        language: system
+        types: [python]

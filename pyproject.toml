@@ -1,50 +1,59 @@
 [project]
-name = ""
-version = ""
+name = "inoscrap"
+version = "0.1.0"
 description = ""
 authors = [
     {name = "aryadovoy", email = "ryav.omsk@gmail.com"},
 ]
 dependencies = [
-    "pydantic-settings>=2.1.0",
-    "aiohttp>=3.9.1",
+    "pydantic-settings>=2.10.1",
+    "aiohttp>=3.12.14",
+    "pydantic[email]>=2.11.7",
 ]
-requires-python = ">=3.12"
+requires-python = "==3.13.*"
 readme = "README.md"
 license = {text = "MIT"}
 
-[tool.pdm.dev-dependencies]
+[dependency-groups]
 dev = [
-    "ruff>=0.1.6",
-    "black>=23.11.0",
-    "pre-commit>=3.5.0",
-    "ipykernel>=6.27.1",
+    "ruff>=0.12.4",
+    "pre-commit>=4.2.0",
+    "ipykernel>=6.29.5",
+    "pyright>=1.1.403",
 ]
-
-[tool.pdm.build]
-package-dir = "src"
-
-[tool.pdm.scripts]
-_.env_file.override = ".env"
-tests = "python -m pytest tests/"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 pythonpath = "src"
 
 [tool.ruff]
-src = ["src", "tests", "scripts"]
-select = ["E", "F", "I", "SIM", "ARG", "T20", "Q", "N", "ANN", "RET", "PT", "C4", "C90"]
-ignore = ["ANN101", "ANN102", "ANN002", "ANN003"]
-extend-exclude = [".venv", "alembic", "pyproject.toml"]
-unfixable = ["T20", "E711", "E712"]
-
-[tool.black]
+target-version = "py313"
+src = ["src", "tests"]
 line-length = 79
-force-exclude = "(alembic|.venv)/"
 
-[tool.mypy]
-pretty = true
-ignore_missing_imports = true
-explicit_package_bases = true
-namespace_packages = true
+[tool.ruff.lint]
+select = [
+    "E",        # pycodestyle errors
+    "F",        # pyflakes errors (unused imports, variables, etc.)
+    "I",        # isort import sorting
+    "SIM",      # flake8-simplify
+    "ARG",      # flake8-unused-arguments
+    "T20",      # flake8-print (print statements)
+    "Q",        # flake8-quotes
+    "N",        # pep8-naming
+    "ANN",      # flake8-annotations
+    "RET",      # flake8-return
+    "PT",       # flake8-pytest-style
+    "C4",       # flake8-comprehensions
+    "C90",      # mccabe complexity
+]
+unfixable = [
+    "T20",      # flake8-print (print statements)
+    "E711",     # comparison to None should be 'if cond is None:'
+    "E712",     # comparison to True/False should be 'if cond is True:'
+]
+ignore = [
+    "ANN002",   # type annotation for *args
+    "ANN003",   # type annotation for **kwargs
+    "PT003",    # pytest fixtures scope
+]
