@@ -1,14 +1,14 @@
 [project]
-name = "inoscrap"
-version = "0.1.0"
-description = ""
+name = "inocli"
+version = "0.0.0"
+description = "Unofficial Inoreader client"
 authors = [
     {name = "aryadovoy", email = "ryav.omsk@gmail.com"},
 ]
 dependencies = [
-    "pydantic-settings>=2.10.1",
-    "aiohttp>=3.12.14",
-    "pydantic[email]>=2.11.7",
+    "pydantic-settings>=2.0.0",
+    "aiohttp>=3.0.0",
+    "pydantic[email]>=2.0.0",
 ]
 requires-python = "==3.13.*"
 readme = "README.md"
@@ -20,6 +20,7 @@ dev = [
     "pre-commit>=4.2.0",
     "ipykernel>=6.29.5",
     "pyright>=1.1.403",
+    "commitizen>=4.8.3",
 ]
 
 [tool.pytest.ini_options]
@@ -56,4 +57,16 @@ ignore = [
     "ANN002",   # type annotation for *args
     "ANN003",   # type annotation for **kwargs
     "PT003",    # pytest fixtures scope
+]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "pep440"
+version_provider = "pep621"
+update_changelog_on_bump = true
+major_version_zero = true
+version_files = [
+    "src/inocli/__init__.py",
+    "pyproject.toml:version"
 ]

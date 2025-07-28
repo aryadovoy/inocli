@@ -1,1 +1,1 @@
-# Scrapper for Inoreader
+# Unofficial Inoreader client
