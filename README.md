@@ -4,11 +4,11 @@ An async Python client for the Inoreader API that provides easy access to your R
 
 ## Features
 
-- **Async/await support** - Built with aiohttp for efficient async operations
-- **Type safety** - Full type hints and Pydantic models for data validation
-- **Easy authentication** - Automatic API key management
-- **Tag management** - Read, star, like, and organize your articles
-- **Custom tags** - Create and manage your own tags
+- **Async/await support**: built with aiohttp for efficient async operations
+- **Type safety**: full type hints and Pydantic models for data validation
+- **Easy authentication**: automatic API key management
+- **Tag management**: read, star, like, and organize your articles
+- **Custom tags**: create and manage your own tags
 
 ## Installation
 
@@ -20,7 +20,7 @@ pip install git+https://github.com/aryadovoy/inocli.git
 
 Or by `uv`:
 
-```bash
+```shell
 uv add "git+https://github.com/aryadovoy/inocli.git"
 ```
 
@@ -41,8 +41,7 @@ INOREADER_PASSWORD=your_password
 
 ```python
 import asyncio
-from inocli.client import InoreaderClient
-from inocli.configs import InoreaderConfig
+from inocli import InoreaderClient, InoreaderConfig
 
 async def main():
     # Load configuration from environment variables
@@ -70,6 +69,10 @@ async def main():
 # Run the example
 asyncio.run(main())
 ```
+
+## Inoreader API Documentation
+
+For more details on the Inoreader API, refer to the official documentation: [Inoreader API Documentation](https://www.inoreader.com/developers/docs)
 
 ## License
 
