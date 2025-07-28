@@ -1,6 +1,6 @@
 [project]
 name = "inocli"
-version = "0.0.0"
+version = "0.1.0"
 description = "Unofficial Inoreader client"
 authors = [
     {name = "aryadovoy", email = "ryav.omsk@gmail.com"},
