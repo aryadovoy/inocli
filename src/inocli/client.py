@@ -1,7 +1,13 @@
-from enum import StrEnum
-from typing import Final, Self
+import sys
+from enum import Enum
+from typing import Final
 
 from aiohttp import ClientSession
+
+if sys.version_info >= (3, 11):
+    from typing import Self
+else:
+    from typing_extensions import Self
 from yarl import URL
 
 from inocli.configs import InoreaderConfig
@@ -13,7 +19,7 @@ from inocli.schemas import (
 )
 
 
-class SystemTag(StrEnum):
+class SystemTag(str, Enum):
     READ = "user/-/state/com.google/read"
     STARRED = "user/-/state/com.google/starred"
     LIKED = "user/-/state/com.google/like"
