@@ -46,8 +46,8 @@ class Subscription(BaseSchema):
     feed_type: str = Field(validation_alias="feedType")
     title: str
     categories: list[Category]
-    sortid: str
-    firstitemmsec: int
+    sort_id: str = Field(validation_alias="sortid")
+    first_item_msec: int = Field(validation_alias="firstitemmsec")
     url: str
     html_url: str = Field(validation_alias="htmlUrl")
     icon_url: str = Field(validation_alias="iconUrl")
@@ -59,7 +59,7 @@ class SubscriptionsList(BaseSchema):
 
 class Tag(BaseSchema):
     id_: str = Field(validation_alias="id")
-    sortid: str
+    sort_id: str = Field(validation_alias="sortid")
     unread_count: int | None = Field(
         default=None, validation_alias="unreadCount"
     )
